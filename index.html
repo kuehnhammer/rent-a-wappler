@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Rent a Wappler</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Karla:ital,wght@0,400;0,600;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: Verleih-Katalog im Warnschild-Look — Absperrband als Leitmotiv, Karteikarten für die Wappler, Tarifblatt wie vom Gewerbeamt */
+:root{
+  --bg:#f6f3ea;
+  --paper:#fffdf6;
+  --ink:#1c2340;
+  --muted:#5b6078;
+  --signal:#ffc21a;
+  --signal-ink:#1c2340;
+  --red:#d6362b;
+  --line:#d9d3c2;
+  --display:"Bowlby One SC","Arial Black",Impact,sans-serif;
+  --body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12162a;--paper:#1a1f38;--ink:#efe9d8;--muted:#a7abc2;--signal:#ffc21a;--signal-ink:#12162a;--red:#ff6a5c;--line:#2e3456;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12162a;--paper:#1a1f38;--ink:#efe9d8;--muted:#a7abc2;--signal:#ffc21a;--signal-ink:#12162a;--red:#ff6a5c;--line:#2e3456;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;text-wrap:balance;margin:0}
+p{margin:0}
+.tape{background:repeating-linear-gradient(-45deg,var(--signal) 0 22px,#1c2340 22px 44px);height:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Kopf */
+header.top{padding-block:14px}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:22px;letter-spacing:.01em}
+.logo span{background:var(--signal);color:var(--signal-ink);padding:0 6px}
+nav{display:flex;gap:18px;flex-wrap:wrap;font-weight:600}
+nav a{color:var(--ink);text-decoration:none;border-bottom:2px solid transparent}
+nav a:hover,nav a:focus-visible{border-color:var(--signal);outline:none}
+
+/* Hero */
+.hero{padding-block:48px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,8.5vw,104px);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lede{margin-top:20px;font-size:20px;max-width:34ch;color:var(--ink)}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--ink);color:var(--bg);font-weight:800;padding:14px 22px;text-decoration:none;border:3px solid var(--ink);transition:transform .15s}
+.cta:hover,.cta:focus-visible{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--signal);outline:none}
+.sign{background:var(--signal);color:var(--signal-ink);border:4px solid #1c2340;border-radius:14px;padding:26px 24px;transform:rotate(-2.5deg);box-shadow:8px 8px 0 #1c2340}
+.sign .tri{font-size:54px;line-height:1;font-family:var(--display)}
+.sign h2{font-size:30px;margin-top:8px}
+.sign p{margin-top:8px;font-weight:600}
+.sign .small{font-family:var(--mono);font-size:12px;margin-top:14px;opacity:.85}
+
+/* Abschnitt */
+section{padding-block:56px}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(32px,5vw,52px)}
+.sec-head p{color:var(--muted);max-width:60ch}
+
+/* Katalog */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--paper);border:2px solid var(--ink);display:flex;flex-direction:column}
+.card .head{display:flex;justify-content:space-between;align-items:baseline;padding:14px 16px;border-bottom:2px dashed var(--line);gap:8px}
+.card .nr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.card h3{font-size:24px}
+.card .body{padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .quote{font-style:italic;color:var(--muted)}
+.wgrad{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px}
+.meter{flex:1;height:10px;background:var(--line);position:relative}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--red)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;font-weight:600;border:1.5px solid var(--ink);padding:1px 8px;border-radius:99px}
+.card .foot{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-top:2px solid var(--ink);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.card .foot b{font-size:18px}
+.pick{font:inherit;font-family:var(--body);font-weight:800;background:var(--signal);color:var(--signal-ink);border:2px solid var(--ink);padding:6px 12px;cursor:pointer}
+.pick:hover,.pick:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* Einsätze */
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:2px solid var(--ink)}
+.use{padding:18px 16px 18px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.use h3{font-family:var(--body);font-weight:800;font-size:19px}
+.use p{color:var(--muted);font-size:15.5px}
+
+/* Buchung */
+.book{background:var(--ink);color:var(--bg)}
+.book .sec-head p,.book .eyebrow{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.book-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
+form{display:flex;flex-direction:column;gap:18px}
+label,.lbl{font-weight:800;font-size:15px;display:block;margin-bottom:6px}
+select,input[type=text],input[type=date]{width:100%;font:inherit;padding:10px 12px;background:var(--bg);color:var(--ink);border:2px solid var(--signal);border-radius:0}
+select:focus-visible,input:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--signal)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.checks{display:flex;flex-direction:column;gap:8px}
+.checks label{font-weight:400;display:flex;gap:10px;align-items:flex-start;margin:0;cursor:pointer}
+.checks input{accent-color:var(--signal);margin-top:5px}
+.bill{background:var(--paper);color:var(--ink);border:3px solid var(--signal);padding:20px;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.bill h3{font-family:var(--display);font-size:22px;margin-bottom:12px}
+.bill .ln{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--line)}
+.bill .ln span:first-child{min-width:0}
+.bill .tot{display:flex;justify-content:space-between;font-size:20px;font-weight:700;padding-top:12px}
+.bill .note{font-family:var(--body);font-size:13px;color:var(--muted);margin-top:12px}
+.submit{font:inherit;font-weight:800;font-size:18px;background:var(--signal);color:var(--signal-ink);border:none;padding:14px 22px;cursor:pointer;align-self:flex-start}
+.submit:hover,.submit:focus-visible{outline:3px solid var(--bg);outline-offset:3px}
+.done{border:2px dashed var(--signal);padding:16px;font-weight:600}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding-block:14px}
+summary{font-weight:800;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-family:var(--mono)}
+details[open] summary::after{content:"–"}
+details p{margin-top:8px;color:var(--muted);max-width:65ch}
+summary:focus-visible{outline:3px solid var(--signal);outline-offset:4px}
+
+footer{padding-block:28px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .hero .wrap,.book-grid{grid-template-columns:1fr}
+  .sign{transform:rotate(-1.5deg)}
+  .bill{position:static}
+  .row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="tape" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <div class="logo">rent<span>a</span>wappler</div>
+    <nav aria-label="Hauptmenü">
+      <a href="#katalog">Katalog</a>
+      <a href="#einsatz">Einsatzgebiete</a>
+      <a href="#buchen">Buchen</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Österreichs erster Wappler-Verleih · seit gestern</p>
+      <h1>Du musst nicht selbst der <em>Wappler</em> sein.</h1>
+      <p class="lede">Wir schicken dir einen. Pünktlich (ungefähr), geprüft und mit vollem Selbstbewusstsein. Für alles, wo jemand anderer die Schuld haben soll.</p>
+      <a class="cta" href="#buchen">Wappler buchen →</a>
+    </div>
+    <div class="sign" role="note">
+      <div class="tri" aria-hidden="true">⚠</div>
+      <h2>Achtung, Wappler im Einsatz</h2>
+      <p>Alle unsere Wappler sind zertifiziert nach ÖNORM W&nbsp;4711 und haften für nichts.</p>
+      <p class="small">Prüfstelle: Stammtisch „Zum Grünen Baum", Hausleiten</p>
+    </div>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true"></div>
+
+<section id="katalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Katalog · Herbst 2026</p>
+      <h2>Unsere Wappler</h2>
+      <p>Jeder Wappler wird nach dem amtlichen W-Grad eingestuft: von 1 (leicht verpeilt) bis 10 (hat den Akkuschrauber im Kühlschrank gesucht).</p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="einsatz">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Wofür man einen Wappler braucht</p>
+      <h2>Einsatzgebiete</h2>
+    </div>
+    <div class="uses">
+      <div class="use"><h3>IKEA-Aufbau</h3><p>Der Wappler hält die Anleitung verkehrt herum. Du wirkst daneben wie ein Tischlermeister.</p></div>
+      <div class="use"><h3>Schwiegereltern-Besuch</h3><p>Lenkt alle Aufmerksamkeit auf sich. Über deine Frisur redet danach niemand mehr.</p></div>
+      <div class="use"><h3>Büro-Sündenbock</h3><p>Serverausfall? Der Wappler war kurz im Raum. Mehr muss man nicht sagen.</p></div>
+      <div class="use"><h3>Einparken mit Publikum</h3><p>Er weist dich ein. Wenn es schiefgeht, sieht jeder, wer gewunken hat.</p></div>
+      <div class="use"><h3>Hochzeitsrede</h3><p>Vor dem Wappler ist jede Rede gut. Nach dem Wappler auch.</p></div>
+      <div class="use"><h3>Heimwerker-Begleitung</h3><p>Sagt bei jedem Handgriff „Des hätt i anders g'macht". Kostenlos inkludiert.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="buchen" class="book">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Buchung · Tarifblatt gemäß Wappler-Verleihordnung</p>
+      <h2>Wappler buchen</h2>
+      <p>Stell dir deinen Einsatz zusammen. Der Preis rechnet sich von selbst, was mehr ist, als man vom Wappler sagen kann.</p>
+    </div>
+    <div class="book-grid">
+      <form id="f" novalidate>
+        <div>
+          <label for="w">Wappler</label>
+          <select id="w"></select>
+        </div>
+        <div class="row">
+          <div>
+            <label for="einsatz-typ">Einsatz</label>
+            <select id="einsatz-typ">
+              <option value="1">IKEA-Aufbau</option>
+              <option value="1.4">Schwiegereltern-Besuch</option>
+              <option value="1.2">Büro-Sündenbock</option>
+              <option value="0.8">Einparken mit Publikum</option>
+              <option value="2">Hochzeitsrede</option>
+              <option value="1.1">Heimwerker-Begleitung</option>
+            </select>
+          </div>
+          <div>
+            <label for="datum">Datum</label>
+            <input type="date" id="datum">
+          </div>
+        </div>
+        <div>
+          <label for="std">Dauer: <span id="std-out">3</span> Stunden</label>
+          <input type="range" id="std" min="1" max="12" value="3">
+        </div>
+        <div>
+          <span class="lbl">Extras</span>
+          <div class="checks">
+            <label><input type="checkbox" id="x1" value="15" checked> Bringt eigenes Werkzeug mit (das falsche) <span>+ €15</span></label>
+            <label><input type="checkbox" id="x2" value="9"> Ungefragte Kommentare in Dialekt <span>+ €9</span></label>
+            <label><input type="checkbox" id="x3" value="25"> Wappler-Warnweste, damit es alle wissen <span>+ €25</span></label>
+            <label><input type="checkbox" id="x4" value="-10"> Pünktlichkeitsgarantie (wird nicht eingehalten, daher Rabatt) <span>− €10</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="name">Dein Name</label>
+          <input type="text" id="name" placeholder="z. B. Gertraud aus Stockerau" autocomplete="name">
+        </div>
+        <button type="submit" class="submit">Anfrage abschicken</button>
+        <div class="done" id="done" hidden></div>
+      </form>
+
+      <aside class="bill" aria-live="polite">
+        <h3>Kostenvoranschlag</h3>
+        <div id="lines"></div>
+        <div class="tot"><span>Gesamt</span><span id="tot">€ 0,00</span></div>
+        <p class="note">Inkl. 20 % USt. und 0 % Gewähr. Trinkgeld in Form von Leberkässemmeln wird gern angenommen.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Häufige Fragen</p>
+      <h2>FAQ</h2>
+    </div>
+    <details><summary>Was ist überhaupt ein Wappler?</summary><p>Ein Mensch, der mit großem Eifer und wenig Plan ans Werk geht. Bundesweit verbreitet, besonders häufig in Baumärkten am Samstagvormittag.</p></details>
+    <details><summary>Kann ich meinen Wappler zurückgeben?</summary><p>Ja, innerhalb von 14 Tagen. Er findet den Weg zurück allerdings meistens nicht allein.</p></details>
+    <details><summary>Was, wenn der Wappler etwas kaputt macht?</summary><p>Dann hat er seinen Job erfüllt. Für echte Schäden gilt unsere Haftungsklausel: „Do kann ma nix mochn."</p></details>
+    <details><summary>Kann ich selbst Wappler werden?</summary><p>Wenn du diese Frage ernst meinst, bist du wahrscheinlich schon qualifiziert. Bewerbungen bitte persönlich, am falschen Tag.</p></details>
+    <details><summary>Ist das ernst gemeint?</summary><p>Nein. Alle Wappler auf dieser Seite sind frei erfunden. Ähnlichkeiten mit deinem Schwager sind rein zufällig.</p></details>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <span>© 2026 rentawappler.com · Satire</span>
+    <span>Impressum liegt irgendwo. Der Wappler hat's verlegt.</span>
+  </div>
+</footer>
+
+<script>
+const W=[
+  {id:"ferdl",name:"Ferdl",nr:"W-001",grad:7,rate:24,quote:"„Des geht scho, i hab des im Gefühl.\"",tags:["Heimwerker","Optimist","Kabelbinder"]},
+  {id:"gerti",name:"Gerti",nr:"W-002",grad:5,rate:19,quote:"„Wo is jetzt da Schlüssel? Der war grad no do.\"",tags:["Verlegerin","Multitasking","Handtasche XL"]},
+  {id:"kevin",name:"Kevin-Pascal",nr:"W-003",grad:9,rate:32,quote:"„Hab ich auf YouTube gesehen, voll easy.\"",tags:["Tutorial-Profi","Selbstvertrauen","Akku leer"]},
+  {id:"hofrat",name:"Hofrat Pichler",nr:"W-004",grad:10,rate:49,quote:"„Das haben wir immer schon so gemacht.\"",tags:["Premium","Aktenlage","Mittagspause 11–14"]}
+];
+const $=s=>document.querySelector(s);
+const eur=n=>"€ "+n.toFixed(2).replace(".",",");
+
+$("#cards").innerHTML=W.map(w=>`
+  <article class="card">
+    <div class="head"><h3>${w.name}</h3><span class="nr">${w.nr}</span></div>
+    <div class="body">
+      <p class="quote">${w.quote}</p>
+      <div class="wgrad"><span>W-Grad</span><span class="meter" aria-hidden="true"><i style="width:${w.grad*10}%"></i></span><b>${w.grad}/10</b></div>
+      <div class="tags">${w.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    </div>
+    <div class="foot"><span><b>€${w.rate}</b>/Std.</span><button class="pick" type="button" data-id="${w.id}">Den nehm ich</button></div>
+  </article>`).join("");
+
+$("#w").innerHTML=W.map(w=>`<option value="${w.id}">${w.name} (W-Grad ${w.grad}, €${w.rate}/Std.)</option>`).join("");
+
+document.querySelectorAll(".pick").forEach(b=>b.addEventListener("click",()=>{
+  $("#w").value=b.dataset.id;calc();
+  document.getElementById("buchen").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+}));
+
+const d=new Date();d.setDate(d.getDate()+7);$("#datum").value=d.toISOString().slice(0,10);
+
+function calc(){
+  const w=W.find(x=>x.id===$("#w").value);
+  const sel=$("#einsatz-typ");const f=+sel.value;const std=+$("#std").value;
+  $("#std-out").textContent=std;
+  const base=w.rate*std;
+  const zuschlag=base*(f-1);
+  const lines=[[`${w.name} × ${std} Std.`,base]];
+  if(Math.abs(zuschlag)>0.001)lines.push([(zuschlag>0?"Zuschlag ":"Nachlass ")+sel.options[sel.selectedIndex].text,zuschlag]);
+  ["x1","x2","x3","x4"].forEach(id=>{const c=$("#"+id);if(c.checked)lines.push([c.parentElement.firstChild.nextSibling.textContent.trim().split(" (")[0],+c.value])});
+  lines.push(["Anfahrtspauschale (verfährt sich)",12.5]);
+  const tot=lines.reduce((s,l)=>s+l[1],0);
+  $("#lines").innerHTML=lines.map(l=>`<div class="ln"><span>${l[0]}</span><span>${l[1]<0?"− ":""}${eur(Math.abs(l[1]))}</span></div>`).join("");
+  $("#tot").textContent=eur(tot);
+  return {w,tot};
+}
+$("#f").addEventListener("input",calc);
+$("#f").addEventListener("submit",e=>{
+  e.preventDefault();
+  const {w,tot}=calc();
+  const n=$("#name").value.trim()||"Unbekannt";
+  const dt=new Date($("#datum").value);
+  const ds=isNaN(dt)?"irgendwann":dt.toLocaleDateString("de-AT",{weekday:"long",day:"numeric",month:"long"});
+  const done=$("#done");
+  done.textContent=`Danke, ${n}! Deine Anfrage für ${w.name} am ${ds} (${eur(tot)}) ist vermerkt. ${w.name} kommt voraussichtlich pünktlich, aber an die falsche Adresse. Hinweis: Das ist eine Satire-Seite, es wurde nichts verschickt.`;
+  done.hidden=false;
+});
+calc();
+</script>
+
+</body>
+</html>
