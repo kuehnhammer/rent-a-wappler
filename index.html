@@ -90,6 +90,17 @@ section{padding-block:56px}
 .use h3{font-family:var(--body);font-weight:800;font-size:19px}
 .use p{color:var(--muted);font-size:15.5px}
 
+
+/* Kundenstimmen */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.q{background:var(--paper);border:2px solid var(--ink);padding:18px;display:flex;flex-direction:column;gap:12px;margin:0}
+.q .stars{font-family:var(--mono);color:var(--red);letter-spacing:.15em;font-size:15px}
+.q blockquote{margin:0;font-size:18px;line-height:1.45}
+.q figcaption{margin-top:auto;font-size:14px;color:var(--muted)}
+.q figcaption b{color:var(--ink)}
+.q:nth-child(odd){transform:rotate(-.6deg)}
+.q:nth-child(even){transform:rotate(.5deg)}
+
 /* Buchung */
 .book{background:var(--ink);color:var(--bg)}
 .book .sec-head p,.book .eyebrow{color:color-mix(in srgb,var(--bg) 70%,transparent)}
@@ -140,6 +151,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <nav aria-label="Hauptmenü">
       <a href="#katalog">Katalog</a>
       <a href="#einsatz">Einsatzgebiete</a>
+      <a href="#stimmen">Kundenstimmen</a>
       <a href="#buchen">Buchen</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -190,6 +202,47 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="use"><h3>Hochzeitsrede</h3><p>Vor dem Wappler ist jede Rede gut. Nach dem Wappler auch.</p></div>
       <div class="use"><h3>Heimwerker-Begleitung</h3><p>Sagt bei jedem Handgriff „Des hätt i anders g'macht". Kostenlos inkludiert.</p></div>
       <div class="use"><h3>Party-Rauswurf</h3><p>Um zwei in der Früh fängt er an, von seinem Bausparvertrag zu erzählen. Um Viertel drei ist die Wohnung leer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stimmen">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Kundenstimmen · unverändert aus Wien übernommen</p>
+      <h2>Des sogn unsere Kundn</h2>
+    </div>
+    <div class="quotes">
+      <figure class="q">
+        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>I hob ma an Ferdl fürs Kastl-Aufbaun gnumman. Jetzt hob i zwa Kastln und kans steht. Owa i hob mi no nie so gschickt gfühlt.</blockquote>
+        <figcaption><b>Poldi H.</b>, Ottakring</figcaption>
+      </figure>
+      <figure class="q">
+        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>Mei Schwiegermutter hod den gaunzn Obend nur übern Kevin-Pascal gredt. Über mi ka anzigs Wort. Des woar ma jeden Cent wert.</blockquote>
+        <figcaption><b>Sabine K.</b>, Favoriten</figcaption>
+      </figure>
+      <figure class="q">
+        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>Da Hofrat Pichler is um zehne kumman, hod si hingsetzt und gsogt: „Des is ned mei Zuständigkeit.“ Weltklasse.</blockquote>
+        <figcaption><b>Ing. Gerhard W.</b>, Hietzing</figcaption>
+      </figure>
+      <figure class="q">
+        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <blockquote>Um zwa in da Fruah hod da Ferdl mit sein Bausparvertrag aufgfangt. Um viertl drei woar d’Hüttn laar. Nächsts Joar wieda!</blockquote>
+        <figcaption><b>Mausi &amp; Schurl</b>, Floridsdorf</figcaption>
+      </figure>
+      <figure class="q">
+        <div class="stars" aria-label="4 von 5 Sternen">★★★★☆</div>
+        <blockquote>D’Gerti hod mein Autoschlüssl gsuacht und dabei zwa Handys gfundn, de i seit 2019 vamiss. Da Autoschlüssl is no imma weg.</blockquote>
+        <figcaption><b>Herr Novak</b>, Simmering</figcaption>
+      </figure>
+      <figure class="q">
+        <div class="stars" aria-label="1 von 5 Sternen">★☆☆☆☆</div>
+        <blockquote>Der hod si vü z’guat auskennt. Des woar ka echter Wappler, des woar a Fochmau. Bitte mehr Qualitätskontrolle.</blockquote>
+        <figcaption><b>Anonym</b>, Döbling</figcaption>
+      </figure>
     </div>
   </div>
 </section>
